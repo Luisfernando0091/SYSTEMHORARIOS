@@ -1,12 +1,3 @@
-@extends('layouts.app')
-
-@section('title', 'Dashboard')
-
-@section('content')
-<div class="container-fluid">
-    <h1 class="h3 mb-4 text-gray-800">Bienvenido al Dashboard</h1>
-</div>
-@endsection
 
 
 
@@ -23,14 +14,18 @@
 
     <title>SB Admin 2 - Dashboard</title>
 
-    <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+ <!-- 1. Estilos Personalizados (Font Awesome y Google Fonts) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
-    <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- 2. Estilos Principales de SB Admin 2 -->
+    <link href="https://startbootstrap.github.io/startbootstrap-sb-admin-2/css/sb-admin-2.min.css" rel="stylesheet">
+
+    @yield('styles')
+
+    
 
 </head>
 
@@ -120,14 +115,20 @@
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
+ <h6 class="collapse-header">Login Screens:</h6>
+<a class="collapse-item" href="{{ route('login') }}">Login</a>
+<a class="collapse-item" href="{{ route('usuarios.create') }}">Registrar Usuario</a>
+
                         <a class="collapse-item" href="register.html">Register</a>
+                        <a class="nav-link" href="{{ route('usuarios.create') }}">Registrar Usuario</a>
+
                         <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
                         <a class="collapse-item" href="404.html">404 Page</a>
-<a class="collapse-item" href="{{ route('registros.index') }}">Register Horarios</a>                        <a class="collapse-item" href="blank.html">Blank Page</a>
+
+                        <a class="nav-link" href="{{ route('registros.index') }}">Register Horarios</a>
+                        <a class="collapse-item" href="blank.html">Blank Page</a>
                     </div>
                 </div>
             </li>
@@ -138,6 +139,17 @@
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Charts</span></a>
             </li>
+
+            <li class="nav-label">Gestión de Usuarios</li>
+
+
+
+<li class="nav-item">
+    <a class="nav-link" href="{{ route('usuarios.create') }}">
+        <i class="fa fa-user-plus"></i> Registrar Usuario
+    </a>
+</li>
+
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
@@ -155,11 +167,11 @@
             </div>
 
             <!-- Sidebar Message -->
-            <div class="sidebar-card d-none d-lg-flex">
+            {{-- <div class="sidebar-card d-none d-lg-flex">
                 <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
                 <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
                 <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-            </div>
+            </div> --}}
 
         </ul>
         <!-- End of Sidebar -->
@@ -375,7 +387,7 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
+                {{-- <div class="container-fluid">
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -702,7 +714,8 @@
                         </div>
                     </div>
 
-                </div>
+                </div> --}}
+                @yield('content')
                 <!-- /.container-fluid -->
 
             </div>
@@ -742,30 +755,29 @@
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
+    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+    <a class="btn btn-primary" href="{{ route('login') }}">Logout</a>
+</div>
+
             </div>
         </div>
     </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+   <!-- 3. Scripts Base -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="https://startbootstrap.github.io/startbootstrap-sb-admin-2/js/sb-admin-2.min.js"></script>
+    
+    <!-- 4. LIBRERÍA DE GRÁFICOS (Chart.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- 5. SCRIPTS DE DEMO DE GRÁFICOS (Definen los datos y estilos de los gráficos) -->
+    {{-- Nota: Estos scripts son los que vienen en el template SB Admin 2 y definen los gráficos. --}}
+    <script src="https://startbootstrap.github.io/startbootstrap-sb-admin-2/js/demo/chart-area-demo.js"></script>
+    <script src="https://startbootstrap.github.io/startbootstrap-sb-admin-2/js/demo/chart-pie-demo.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
-
+    @yield('scripts')
 </body>
 
 </html>

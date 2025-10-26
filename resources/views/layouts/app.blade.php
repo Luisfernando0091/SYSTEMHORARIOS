@@ -9,7 +9,7 @@
     <meta name="description" content="Dashboard administrativo con Laravel y SB Admin 2.">
     <meta name="author" content="Tu Nombre">
 
-    <title>Sistema Admin - @yield('title', 'Dashboard')</title>
+<title>@yield('title', 'Dashboard') | Sistema Admin</title>
 
     <!-- 1. Estilos Personalizados (Font Awesome y Google Fonts) -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" type="text/css">
