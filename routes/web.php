@@ -15,10 +15,11 @@ Route::get('/', function () {
 });
 
 // DASHBOARD (solo para usuarios autenticados)
+Route::get('/dashboard', function () {
+    $totalUsuarios = \App\Models\User::count();
+    return view('inicio.index', compact('totalUsuarios'));
+})->middleware('auth')->name('dashboard');
 
-Route::get('/dashboard', [UserWebController::class, 'index'])
-    ->middleware('auth')
-    ->name('dashboard');
 // REGISTROS - RESTful
 Route::resource('registros', AsistenciaController::class);
 

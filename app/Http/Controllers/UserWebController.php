@@ -13,10 +13,10 @@ public function index()
 {
     // Obtenemos todos los usuarios con su rol
     $usuarios = User::with('roles')->get();
-    $totalUsuarios = User::count();
-    // Enviamos los datos a la vista
-return view('inicio.index', compact('totalUsuarios'));}
 
+    // Enviamos los datos a la vista usuarios.index
+    return view('usuarios.index', compact('usuarios'));
+}
 
 
     public function create()
