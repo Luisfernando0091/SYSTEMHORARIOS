@@ -8,7 +8,17 @@ use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role; // ✅ Import correcto
 
 class UserWebController extends Controller
+{ 
+public function index()
 {
+    // Obtenemos todos los usuarios con su rol
+    $usuarios = User::with('roles')->get();
+    $totalUsuarios = User::count();
+    // Enviamos los datos a la vista
+return view('inicio.index', compact('totalUsuarios'));}
+
+
+
     public function create()
 { $roles = Role::all();
         return view('usuarios.create',compact('roles'));
