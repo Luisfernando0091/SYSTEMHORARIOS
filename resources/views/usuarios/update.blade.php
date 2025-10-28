@@ -74,21 +74,21 @@
         
         <hr>
         
-        {{-- <h3>Cambiar Contraseña (Opcional)</h3> --}}
+        <h3>Cambiar Contraseña (Opcional)</h3>
         {{-- CAMPO: Contraseña --}}
-        {{-- <div class="form-group">
+        <div class="form-group">
             <label for="password">Nueva Contraseña</label>
             <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror">
             @error('password')<span class="invalid-feedback">{{ $message }}</span>@enderror
-        </div> --}}
+        </div>
 
         {{-- CAMPO: Confirmar Contraseña --}}
-        {{-- <div class="form-group">
+        <div class="form-group">
             <label for="password_confirmation">Confirmar Contraseña</label>
             <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
         </div>
 
-        <button type="submit" class="btn btn-primary mt-3">Guardar Cambios</button> --}}
+        <button type="submit" class="btn btn-primary mt-3">Guardar Cambios</button>
     </form>
 </div>
 @endsection

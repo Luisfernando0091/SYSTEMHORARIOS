@@ -39,8 +39,8 @@
                                     @endforeach
                                 </td>
                                 <td>
-                                    <a href="#" class="btn btn-warning btn-sm">Editar</a>
-                                    <a href="#" class="btn btn-danger btn-sm">Eliminar</a>
+<a href="{{ route('usuarios.edit', $usuario->id) }}" class="btn btn-warning btn-sm">Editar</a>   
+                              <a href="#" class="btn btn-danger btn-sm">Eliminar</a>
                                 </td>
                             </tr>
                         @endforeach
